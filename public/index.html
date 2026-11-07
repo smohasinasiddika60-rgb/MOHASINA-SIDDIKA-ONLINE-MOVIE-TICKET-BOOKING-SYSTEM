@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOHASINA SIDDIKA | Online Movie Ticket Booking System</title>
+  <meta name="description" content="Experience premier cinema with MOHASINA SIDDIKA Online Movie Ticket Booking. Real-time seat selection, Dolby Atmos theaters, and instant digital passes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="announcement-bar" aria-label="Special Offers">
+    <div class="container bar-content">
+      <span><i class="fa-solid fa-sparkles"></i> Welcome to <strong>MOHASINA SIDDIKA</strong> Online Movie Booking! Enjoy flat 15% off with code <strong>SIDDIKA15</strong></span>
+      <div class="bar-links">
+        <a href="/mohasina-movie-booking.zip" download><i class="fa-solid fa-download"></i> Download Project (.ZIP)</a>
+        <a href="#lookup-section"><i class="fa-solid fa-ticket"></i> Find My Ticket</a>
+        <button id="system-status-btn" class="pill-btn-sm" aria-label="View system status"><i class="fa-solid fa-database"></i> DB Status</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Navigation Header -->
+  <header class="main-header">
+    <div class="container nav-wrapper">
+      <a href="#" class="brand-logo" aria-label="MOHASINA SIDDIKA CinePass Home">
+        <div class="logo-icon">
+          <i class="fa-solid fa-film"></i>
+        </div>
+        <div class="logo-text">
+          <span class="brand-name">MOHASINA SIDDIKA</span>
+          <span class="brand-tag">Online Movie Booking</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#movies-section" class="nav-link active">Movies</a>
+        <a href="#theaters-section" class="nav-link">Theaters</a>
+        <a href="#about-section" class="nav-link">About Mohasina</a>
+        <a href="#lookup-section" class="nav-link">My Bookings</a>
+      </nav>
+
+      <div class="nav-actions">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="movie-search-input" placeholder="Search movies, genres..." aria-label="Search movies">
+        </div>
+        <a href="#movies-section" class="btn btn-primary btn-book-nav">
+          <i class="fa-solid fa-ticket-simple"></i> Book Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section Featuring User's Picture -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <i class="fa-solid fa-star"></i> Premier Multiplex Experience
+        </div>
+        <h1 class="hero-title">
+          Book Your Favorite Cinema Seats with <span class="highlight-text">MOHASINA SIDDIKA</span>
+        </h1>
+        <p class="hero-desc">
+          Immerse yourself in crystal-clear 4K Laser Projection, immersive Dolby Atmos sound, and ultra-luxurious recliner seating. Reserve your tickets instantly online with real-time seat picking.
+        </p>
+
+        <div class="hero-ctas">
+          <a href="#movies-section" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-film"></i> Explore Movies
+          </a>
+          <a href="#lookup-section" class="btn btn-outline btn-lg">
+            <i class="fa-solid fa-qrcode"></i> Retrieve Ticket
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">4K Laser</span>
+            <span class="stat-label">Ultra HD Screens</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Dolby 7.1</span>
+            <span class="stat-label">Surround Sound</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">VIP Recliner</span>
+            <span class="stat-label">Luxury Comfort</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Showcase with Mohasina's Photo -->
+      <div class="hero-visual">
+        <div class="visual-card">
+          <div class="image-wrapper">
+            <img src="assets/images/mohasina-hero.jpg" alt="Mohasina Siddika holding movie tickets in cinema auditorium" class="mohasina-img">
+            <div class="image-overlay-badge">
+              <i class="fa-solid fa-ticket"></i> Verified Ticket Holder
+            </div>
+          </div>
+          <div class="card-caption">
+            <div class="caption-avatar">
+              <i class="fa-solid fa-clapperboard"></i>
+            </div>
+            <div class="caption-info">
+              <h4>MOHASINA SIDDIKA</h4>
+              <p>Host & Cinema Curator &bull; Enjoy the show!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Filter Bar -->
+  <section class="filters-section" id="movies-section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-tag">Browse Catalog</span>
+          <h2 class="section-title">Now Showing & Upcoming Releases</h2>
+        </div>
+        <div class="filter-pills" id="category-filters">
+          <button class="filter-btn active" data-filter="all">All Movies</button>
+          <button class="filter-btn" data-filter="now_showing">Now Showing</button>
+          <button class="filter-btn" data-filter="coming_soon">Coming Soon</button>
+          <button class="filter-btn" data-filter="Sci-Fi">Sci-Fi</button>
+          <button class="filter-btn" data-filter="Action">Action</button>
+          <button class="filter-btn" data-filter="Animation">Animation</button>
+        </div>
+      </div>
+
+      <!-- Movies Grid -->
+      <div class="movies-grid" id="movies-grid">
+        <div class="loading-spinner">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <p>Loading premier movies...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Theater Experience Features -->
+  <section class="features-section" id="theaters-section">
+    <div class="container">
+      <div class="features-header text-center">
+        <span class="section-tag">Why Choose Us</span>
+        <h2 class="section-title">The MOHASINA SIDDIKA Cinema Experience</h2>
+        <p class="section-sub">Engineered to bring movie lovers the ultimate blend of comfort, sight, and sound.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-couch"></i></div>
+          <h3>VIP Recliner Loungers</h3>
+          <p>Plush electric motor recliners with personal charging ports, blanket service, and extra legroom.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-volume-high"></i></div>
+          <h3>Dolby Atmos 64-Channel</h3>
+          <p>Overhead acoustic immersion that places sounds with pinpoint accuracy all around your seat.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-burger"></i></div>
+          <h3>Seat-Side Gourmet Dining</h3>
+          <p>Hot artisanal popcorn, loaded nachos, and chilled beverage delivered directly to your cinema seat.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fa-solid fa-bolt-lightning"></i></div>
+          <h3>Instant QR Digital Pass</h3>
+          <p>Zero paper queues. Scan your smartphone ticket at the auditorium turnstiles for paperless entry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Mohasina Siddika Section -->
+  <section class="about-section" id="about-section">
+    <div class="container about-wrapper">
+      <div class="about-card-left">
+        <img src="assets/images/mohasina-hero.jpg" alt="Mohasina Siddika" class="about-portrait">
+      </div>
+      <div class="about-card-right">
+        <span class="section-tag">About The Platform</span>
+        <h2>Created by MOHASINA SIDDIKA</h2>
+        <p class="about-lead">
+          "Cinema is not just entertainment—it's a shared emotional journey. We built this platform so you can reserve the perfect seat in seconds, without hassle."
+        </p>
+        <p>
+          This enterprise-grade movie booking portal is built using modern full-stack web engineering:
+        </p>
+        <ul class="tech-checklist">
+          <li><i class="fa-solid fa-check"></i> <strong>Frontend:</strong> Responsive HTML5, Semantic CSS3, Vanilla ES6+ JavaScript.</li>
+          <li><i class="fa-solid fa-check"></i> <strong>Backend:</strong> High-performance Express.js REST API with async controllers.</li>
+          <li><i class="fa-solid fa-check"></i> <strong>Database:</strong> Normalized MySQL 8.0 schema (3NF) with dual-mode in-memory resilience.</li>
+          <li><i class="fa-solid fa-check"></i> <strong>Design:</strong> Light, attractive modern aesthetic with warm gold and amber accents.</li>
+        </ul>
+        <div class="about-action">
+          <a href="#movies-section" class="btn btn-primary">Book a Movie Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ticket Lookup / My Bookings Section -->
+  <section class="lookup-section" id="lookup-section">
+    <div class="container">
+      <div class="lookup-card">
+        <div class="lookup-info">
+          <span class="section-tag">Self-Service Portal</span>
+          <h2>Retrieve Your Movie Ticket</h2>
+          <p>Already booked your tickets? Enter your Booking Reference (e.g. <code>MSB-74892</code>) or view sample bookings.</p>
+          
+          <form id="ticket-lookup-form" class="lookup-form">
+            <div class="input-group">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="lookup-ref-input" placeholder="Enter Booking Ref (e.g., MSB-74892)" required>
+              <button type="submit" class="btn btn-primary">Find Ticket</button>
+            </div>
+          </form>
+
+          <div class="sample-badges">
+            <span>Quick Test Refs:</span>
+            <button type="button" class="badge-link" onclick="quickLookup('MSB-74892')">MSB-74892 (Sarah)</button>
+            <button type="button" class="badge-link" onclick="quickLookup('MSB-91024')">MSB-91024 (Rahul)</button>
+          </div>
+        </div>
+
+        <div class="lookup-result-preview" id="lookup-result-preview">
+          <div class="empty-ticket-state">
+            <i class="fa-solid fa-ticket"></i>
+            <p>Your ticket details will appear here once verified.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Seat Booking Modal -->
+  <div class="modal-overlay" id="seat-modal" style="display: none;">
+    <div class="modal-window seat-modal-window">
+      <button class="modal-close-btn" id="close-seat-modal" aria-label="Close booking modal">&times;</button>
+      
+      <div class="booking-flow-container">
+        <!-- Left: Showtime Selection & Seating Map -->
+        <div class="seat-picker-left">
+          <div class="modal-movie-header" id="modal-movie-header">
+            <!-- Dynamically injected: title, rating, screen -->
+          </div>
+
+          <!-- Showtime slots pills -->
+          <div class="showtime-picker">
+            <label class="picker-label"><i class="fa-regular fa-clock"></i> Select Showtime:</label>
+            <div class="showtime-pills" id="modal-showtime-pills">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+
+          <!-- Screen Graphic & Ambient Glow -->
+          <div class="screen-indicator-box">
+            <div class="curved-screen"></div>
+            <span class="screen-text">ALL EYES ON SCREEN</span>
+          </div>
+
+          <!-- Interactive Seat Grid -->
+          <div class="seating-area" id="seating-grid-container">
+            <!-- Dynamically populated seats -->
+          </div>
+
+          <!-- Seat Legend -->
+          <div class="seat-legend">
+            <div class="legend-item">
+              <span class="seat-demo seat-standard"></span>
+              <span>Standard (₹250)</span>
+            </div>
+            <div class="legend-item">
+              <span class="seat-demo seat-premium"></span>
+              <span>Premium (+20%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="seat-demo seat-vip"></span>
+              <span>VIP Recliner (+50%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="seat-demo seat-selected"></span>
+              <span>Selected</span>
+            </div>
+            <div class="legend-item">
+              <span class="seat-demo seat-booked"></span>
+              <span>Sold Out</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Order Summary & Checkout Form -->
+        <div class="seat-picker-right">
+          <h3 class="checkout-title"><i class="fa-solid fa-receipt"></i> Booking Summary</h3>
+
+          <div class="summary-details" id="summary-details">
+            <div class="summary-row">
+              <span class="text-muted">Selected Seats</span>
+              <strong id="summary-seats-text">None selected</strong>
+            </div>
+            <div class="summary-row">
+              <span class="text-muted">Ticket Count</span>
+              <strong id="summary-count-text">0 Tickets</strong>
+            </div>
+            <div class="summary-row">
+              <span class="text-muted">Base Price</span>
+              <span id="summary-base-text">₹0.00</span>
+            </div>
+            <div class="summary-row">
+              <span class="text-muted">Convenience Fee & GST</span>
+              <span id="summary-tax-text">₹0.00</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="summary-row total-row">
+              <span>Total Payable</span>
+              <span class="total-amount" id="summary-total-text">₹0.00</span>
+            </div>
+          </div>
+
+          <!-- Guest Checkout Inputs -->
+          <form id="checkout-form" class="checkout-form">
+            <h4 class="form-subtitle">Guest Contact Details</h4>
+            
+            <div class="form-group">
+              <label for="cust-name">Full Name *</label>
+              <input type="text" id="cust-name" required placeholder="Mohasina Siddika">
+            </div>
+
+            <div class="form-group">
+              <label for="cust-email">Email Address *</label>
+              <input type="email" id="cust-email" required placeholder="mohasina@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="cust-phone">Phone Number *</label>
+              <input type="tel" id="cust-phone" required placeholder="+91 9876543210">
+            </div>
+
+            <div class="form-group">
+              <label for="cust-payment">Payment Method</label>
+              <select id="cust-payment">
+                <option value="UPI / NetBanking">UPI / Instant NetBanking</option>
+                <option value="Credit Card">Credit / Debit Card</option>
+                <option value="Wallet">Digital Wallet</option>
+                <option value="Cash / Counter">Pay at Cinema Counter</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-confirm" id="confirm-booking-btn" disabled>
+              <i class="fa-solid fa-lock"></i> Confirm & Reserve Seats
+            </button>
+            <p class="security-note"><i class="fa-solid fa-shield-halved"></i> 256-bit Encrypted Reservation Guarantee</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trailer / Movie Details Modal -->
+  <div class="modal-overlay" id="trailer-modal" style="display: none;">
+    <div class="modal-window trailer-modal-window">
+      <button class="modal-close-btn" id="close-trailer-modal" aria-label="Close trailer modal">&times;</button>
+      <div class="trailer-wrapper">
+        <iframe id="trailer-iframe" src="" allowfullscreen title="Movie Trailer"></iframe>
+      </div>
+      <div class="trailer-info-body" id="trailer-info-body">
+        <!-- Dynamically injected -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Digital Ticket Pass Modal (Printable) -->
+  <div class="modal-overlay" id="ticket-modal" style="display: none;">
+    <div class="modal-window ticket-modal-window">
+      <button class="modal-close-btn" id="close-ticket-modal" aria-label="Close ticket modal">&times;</button>
+      
+      <div class="ticket-wrapper" id="printable-ticket">
+        <div class="ticket-header-band">
+          <div class="band-brand">
+            <i class="fa-solid fa-film"></i> MOHASINA SIDDIKA CINEPASS
+          </div>
+          <div class="band-status"><i class="fa-solid fa-circle-check"></i> CONFIRMED</div>
+        </div>
+
+        <div class="ticket-body">
+          <div class="ticket-left">
+            <h2 class="ticket-movie-title" id="tkt-movie-title">Movie Title</h2>
+            <div class="ticket-tags">
+              <span class="tag-item" id="tkt-rating">PG-13</span>
+              <span class="tag-item" id="tkt-screen">Screen 1</span>
+              <span class="tag-item" id="tkt-date">Today</span>
+              <span class="tag-item" id="tkt-time">07:00 PM</span>
+            </div>
+
+            <div class="ticket-info-grid">
+              <div class="tkt-field">
+                <span class="lbl">Customer</span>
+                <span class="val" id="tkt-customer">Mohasina Siddika</span>
+              </div>
+              <div class="tkt-field">
+                <span class="lbl">Booking Ref</span>
+                <span class="val highlight" id="tkt-ref">MSB-74892</span>
+              </div>
+              <div class="tkt-field">
+                <span class="lbl">Seats Reserved</span>
+                <span class="val seats-val" id="tkt-seats">A1, A2</span>
+              </div>
+              <div class="tkt-field">
+                <span class="lbl">Total Paid</span>
+                <span class="val" id="tkt-amount">₹590.00</span>
+              </div>
+            </div>
+
+            <div class="ticket-venue">
+              <i class="fa-solid fa-location-dot"></i>
+              <span id="tkt-venue">MOHASINA SIDDIKA Grand Cineplex, Central Avenue</span>
+            </div>
+          </div>
+
+          <div class="ticket-stub">
+            <div class="stub-notch top"></div>
+            <div class="stub-notch bottom"></div>
+            <div class="qr-placeholder">
+              <i class="fa-solid fa-qrcode"></i>
+            </div>
+            <span class="qr-label">SCAN AT TURNSTILE</span>
+            <span class="stub-ref" id="tkt-stub-ref">MSB-74892</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticket-actions">
+        <button class="btn btn-primary" onclick="window.print()">
+          <i class="fa-solid fa-print"></i> Print Ticket Pass
+        </button>
+        <button class="btn btn-outline" id="ticket-modal-done-btn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Database & System Status Modal -->
+  <div class="modal-overlay" id="status-modal" style="display: none;">
+    <div class="modal-window status-modal-window">
+      <button class="modal-close-btn" id="close-status-modal">&times;</button>
+      <div class="status-content">
+        <div class="status-icon"><i class="fa-solid fa-database"></i></div>
+        <h3>System Architecture & Database Info</h3>
+        <p class="status-desc">Active backend configuration and relational database metadata:</p>
+        
+        <div class="status-list" id="status-list-body">
+          <div class="status-row">
+            <span>Project Title:</span>
+            <strong>MOHASINA SIDDIKA Online Movie Booking System</strong>
+          </div>
+          <div class="status-row">
+            <span>Database Mode:</span>
+            <strong id="db-mode-badge" class="badge-db">Detecting...</strong>
+          </div>
+          <div class="status-row">
+            <span>Backend Stack:</span>
+            <strong>Node.js + Express.js + MySQL 8.0</strong>
+          </div>
+          <div class="status-row">
+            <span>Database Tables:</span>
+            <strong>users, movies, theaters, screens, seats, showtimes, bookings, booking_seats, payments</strong>
+          </div>
+          <div class="status-row">
+            <span>Server URL:</span>
+            <code>http://localhost:3000</code>
+          </div>
+        </div>
+        
+        <div class="status-note">
+          <i class="fa-solid fa-circle-info"></i> To link a live MySQL server, simply start MySQL and update credentials in <code>.env</code>.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-content">
+      <div class="footer-col brand-col">
+        <div class="footer-logo">
+          <i class="fa-solid fa-film"></i>
+          <span>MOHASINA SIDDIKA</span>
+        </div>
+        <p>Premier Online Movie Ticket Booking System delivering cinema brilliance with light, attractive aesthetics and real-time seat reservation.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Technology Stack</h4>
+        <ul>
+          <li><i class="fa-brands fa-html5"></i> Semantic HTML5</li>
+          <li><i class="fa-brands fa-css3-alt"></i> Modern Responsive CSS3</li>
+          <li><i class="fa-brands fa-js"></i> Vanilla JavaScript (ES6+)</li>
+          <li><i class="fa-brands fa-node-js"></i> Express.js REST API</li>
+          <li><i class="fa-solid fa-database"></i> MySQL 8.0 Relational DB</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Multiplex Locations</h4>
+        <ul>
+          <li>MOHASINA Grand Cineplex (Central Mall)</li>
+          <li>MOHASINA Luxe Cinema & IMAX (Tech District)</li>
+          <li>MOHASINA Royale Theater (Promenade)</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Customer Care</h4>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i> +91 (080) 4567-8900</li>
+          <li><i class="fa-solid fa-envelope"></i> support@mohasinacinepass.com</li>
+          <li><i class="fa-solid fa-clock"></i> 24/7 Booking Assistance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container bottom-row">
+        <p>&copy; 2026 <strong>MOHASINA SIDDIKA</strong>. All Rights Reserved. Online Movie Ticket Booking System.</p>
+        <p class="footer-credits">Developed with HTML, CSS, JavaScript, Express.js & MySQL</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/seat-picker.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

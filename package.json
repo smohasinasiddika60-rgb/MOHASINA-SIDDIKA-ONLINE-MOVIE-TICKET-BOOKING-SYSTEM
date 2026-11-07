@@ -1,0 +1,28 @@
+{
+  "name": "mohasina-movie-booking",
+  "version": "1.0.0",
+  "description": "MOHASINA SIDDIKA Online Movie Ticket Booking System built with HTML, CSS, JavaScript, Express.js, and MySQL",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js"
+  },
+  "keywords": [
+    "movie-booking",
+    "express",
+    "mysql",
+    "html",
+    "css",
+    "javascript",
+    "cinema",
+    "tickets"
+  ],
+  "author": "Mohasina Siddika",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.4"
+  }
+}
